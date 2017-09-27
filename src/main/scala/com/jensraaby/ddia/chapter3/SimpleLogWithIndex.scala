@@ -29,5 +29,8 @@ class SimpleLogWithIndex(initial: Seq[(Key, Value)] = List.empty) extends Simple
 
   def keys: Iterable[Key] = index.keys
 
+  // this is only exposed for KVStores that need to be able to merge/compact logs
+  private[chapter3] def segment: mutable.Buffer[(Key, Value)] = log
+
   override def toString = s"SimpleLogWithIndex($log)"
 }

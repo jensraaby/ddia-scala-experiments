@@ -17,14 +17,11 @@ class SimpleLog(initial: Seq[(Key, Value)] = List.empty) extends KVStore {
   override def put(key: Key, value: Value): Unit = log.append((key, value))
 }
 
-
-
-
 object SimpleTest extends App {
 
   val simple = new SimpleLog
 
-  val simpleWithIndex = new SimpleLogWithIndex()
+  val simpleWithIndex = new SimpleLogWithIndex
 
   (1 to 1000) foreach { i =>
     simple.put(i.toString, s"value + $i")
